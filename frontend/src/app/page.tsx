@@ -4,7 +4,7 @@ export default function Home() {
       <div className="max-w-xl text-center space-y-4">
         <h1 className="text-3xl font-bold">AI Interview Coach</h1>
         <p className="text-gray-600">
-          Front en ligne ✅ — connecté à Vercel. Backend healthcheck ci-dessous :
+          Front en ligne  — connecté à Vercel. Backend healthcheck ci-dessous :
         </p>
         <HealthCheck />
       </div>

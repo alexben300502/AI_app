@@ -4,7 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 # CORS: autorise le front (Vercel) à appeler l'API
-origins = ["http://localhost:3000"]  # tu ajouteras l'URL Vercel après déploiement
+origins = ["http://localhost:3000",
+           "https://ai-app-42ac.vercel.app"]  # tu ajouteras l'URL Vercel après déploiement
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
