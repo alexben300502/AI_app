@@ -3,6 +3,13 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
+declare global {
+  interface Window {
+    plausible?: (event: string, options?: Record<string, unknown>) => void
+  }
+}
+
+
 export default function WaitlistForm() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
@@ -61,12 +68,13 @@ export default function WaitlistForm() {
       }
 
       // Plausible event (si activé)
-      if ((window as any).plausible) {
-        (window as any).plausible('waitlist_submit', { props: { utm_source: utm.source || 'direct' } })
+      if (window.plausible) {
+        window.plausible('waitlist_submit', { props: { utm_source: utm.source || 'direct' } })
       }
 
+
       setSuccess(true)
-    } catch (err: any) {
+    } catch (err) {
       console.error(err)
       setError("Oups, une erreur est survenue. Réessaie dans un instant.")
     } finally {
